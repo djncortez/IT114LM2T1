@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +11,19 @@ namespace Module1Exercise1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
+        }
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            if (!Page.IsValid)
+            {
+                Label1.Text = "Validation failed";
+                return;
+            }
 
+            Label1.Text = $"Full Name: {fullName.Text}<br />" +
+                          $"Age: {age.Text}<br />" +
+                          $"Email: {email.Text}<br />";
         }
     }
 }
